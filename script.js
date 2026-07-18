@@ -6,6 +6,10 @@ document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',
 const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 
+const interfaceSection=document.querySelector('.product-evidence');
+if(interfaceSection) interfaceSection.id='interface';
+const outcomesSection=document.querySelector('.outcomes');
+if(outcomesSection) outcomesSection.id='outcomes';
 const sections=[...document.querySelectorAll('main section[id]')];
 const sectionObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id))}}),{rootMargin:'-25% 0px -65% 0px'});
 sections.forEach(s=>sectionObserver.observe(s));
